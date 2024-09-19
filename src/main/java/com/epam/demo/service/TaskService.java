@@ -3,6 +3,7 @@ package com.epam.demo.service;
 import com.epam.demo.model.Task;
 import com.epam.demo.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,4 +43,5 @@ public class TaskService {
     public void deleteTask(String id) {
         taskRepository.deleteById(id);
     }
+
 }

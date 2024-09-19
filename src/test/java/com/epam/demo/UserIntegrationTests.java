@@ -1,6 +1,5 @@
 package com.epam.demo;
 
-import com.epam.demo.controller.UserController;
 import com.epam.demo.model.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -18,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureDataMongo
-class DemoApplicationTests {
+class UserIntegrationTests {
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -29,14 +28,14 @@ class DemoApplicationTests {
 	@Test
 	void testCreateUser() throws Exception {
 		User user = new User();
-		user.setName("John Doe");
+		user.setName("John DoeO");
 		user.setEmail("john@example.com");
 
 		mockMvc.perform(post("/api/users")
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(objectMapper.writeValueAsString(user)))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.name").value("John Doe"))
+				.andExpect(jsonPath("$.name").value("John DoeO"))
 				.andExpect(jsonPath("$.email").value("john@example.com"));
 	}
 }
